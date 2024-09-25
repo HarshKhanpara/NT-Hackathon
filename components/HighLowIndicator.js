@@ -1,5 +1,3 @@
-// components/HighLowIndicator.js
-// components/HighLowIndicator.js
 export default function HighLowIndicator({ data }) {
   return (
     <div className="mb-8">
@@ -7,10 +5,9 @@ export default function HighLowIndicator({ data }) {
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-green-100 p-4 rounded">
           <h3 className="font-semibold">Highest Rate</h3>
-          {data.high ? (
+          {data.high !== undefined ? (
             <>
-              <p>Date: {data.high.date}</p>
-              <p>Rate: {data.high.rate}</p>
+              <p>Rate: {data.high.toFixed(4)}</p>
             </>
           ) : (
             <p>No data available</p>
@@ -18,10 +15,9 @@ export default function HighLowIndicator({ data }) {
         </div>
         <div className="bg-red-100 p-4 rounded">
           <h3 className="font-semibold">Lowest Rate</h3>
-          {data.low ? (
+          {data.low !== undefined ? (
             <>
-              <p>Date: {data.low.date}</p>
-              <p>Rate: {data.low.rate}</p>
+              <p>Rate: {data.low.toFixed(4)}</p>
             </>
           ) : (
             <p>No data available</p>
