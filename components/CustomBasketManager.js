@@ -18,51 +18,64 @@ export default function CustomBasketManager() {
   };
 
   const calculateBasketValue = (basket) => {
-    // This function would typically make an API call to get current exchange rates
-    // and calculate the basket value. For now, we'll return a placeholder value.
-    return 1000; // Placeholder value
+    return 1000; // Placeholder value for demonstration purposes
   };
 
   return (
-    <div className="mb-8">
-      <h2 className="text-xl font-semibold mb-4">Custom Currency Baskets</h2>
-      <div className="mb-4">
+    <div className="mb-8 bg-white p-6 shadow-md rounded-lg">
+      <h2 className="text-2xl font-bold mb-4 text-gray-700">Custom Currency Baskets</h2>
+      
+      {/* Basket Name Input */}
+      <div className="mb-6">
         <input
           type="text"
           placeholder="Basket Name"
           value={newBasket.name}
           onChange={(e) => setNewBasket(prev => ({ ...prev, name: e.target.value }))}
-          className="p-2 border rounded mr-2"
+          className="p-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none mb-2"
         />
-        <button onClick={saveBasket} className="bg-blue-500 text-white px-4 py-2 rounded">
+        <button
+          onClick={saveBasket}
+          className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+        >
           Save Basket
         </button>
       </div>
-      <div className="mb-4">
+      
+      {/* Add Currency to Basket */}
+      <div className="mb-6 flex items-center">
         <input
           type="text"
           placeholder="Currency"
-          className="p-2 border rounded mr-2"
+          className="p-3 w-1/3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none mr-4"
         />
         <input
           type="number"
           placeholder="Weight"
-          className="p-2 border rounded mr-2"
+          className="p-3 w-1/3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none mr-4"
         />
-        <button onClick={() => addCurrencyToBasket('USD', 50)} className="bg-green-500 text-white px-4 py-2 rounded">
+        <button
+          onClick={() => addCurrencyToBasket('USD', 50)}
+          className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300"
+        >
           Add to Basket
         </button>
       </div>
+      
+      {/* Display Saved Baskets */}
       <div>
-        <h3 className="font-semibold mb-2">Saved Baskets</h3>
-        {baskets.map((basket, index) => (
-          <div key={index} className="mb-2">
-            <span>{basket.name}: </span>
-            <span>{calculateBasketValue(basket)} {baseCurrency}</span>
-          </div>
-        ))}
+        <h3 className="text-lg font-semibold mb-3 text-gray-600">Saved Baskets</h3>
+        {baskets.length > 0 ? (
+          baskets.map((basket, index) => (
+            <div key={index} className="p-4 bg-gray-100 rounded-lg mb-4 shadow-sm">
+              <span className="font-semibold text-gray-700">{basket.name}: </span>
+              <span className="text-gray-600">{calculateBasketValue(basket)} {baseCurrency}</span>
+            </div>
+          ))
+        ) : (
+          <p className="text-gray-500">No baskets saved yet.</p>
+        )}
       </div>
     </div>
   );
 }
-

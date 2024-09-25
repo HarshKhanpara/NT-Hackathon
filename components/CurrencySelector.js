@@ -1,4 +1,3 @@
-// components/CurrencySelector.js
 import { useState } from 'react';
 
 const currencies = [
@@ -22,19 +21,23 @@ export default function CurrencySelector({ label, value, onChange }) {
   );
 
   return (
-    <div className="mb-4">
-      <label className="block mb-2">{label}</label>
+    <div className="mb-6">
+      <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+      
+      {/* Search Input */}
       <input
         type="text"
         placeholder="Search currency"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full p-2 border rounded mb-2"
+        className="w-full p-2 mb-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
       />
+      
+      {/* Select Dropdown */}
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border border-gray-300 rounded-lg shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
       >
         {filteredCurrencies.map((currency) => (
           <option key={currency.code} value={currency.code}>
@@ -45,4 +48,3 @@ export default function CurrencySelector({ label, value, onChange }) {
     </div>
   );
 }
-

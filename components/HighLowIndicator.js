@@ -1,30 +1,29 @@
-// components/HighLowIndicator.js
-// components/HighLowIndicator.js
 export default function HighLowIndicator({ data }) {
   return (
     <div className="mb-8">
-      <h2 className="text-xl font-semibold mb-4">Highest and Lowest Rates</h2>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-green-100 p-4 rounded">
-          <h3 className="font-semibold">Highest Rate</h3>
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">Highest and Lowest Rates</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="bg-green-50 p-6 rounded-lg shadow-md">
+          <h3 className="text-lg font-semibold text-green-700 mb-2">Highest Rate</h3>
           {data.high ? (
-            <>
-              <p>Date: {data.high.date}</p>
-              <p>Rate: {data.high.rate}</p>
-            </>
+            <div>
+              <p className="text-gray-600">Date: <span className="font-medium">{data.high.date}</span></p>
+              <p className="text-gray-600">Rate: <span className="font-medium">{data.high.rate}</span></p>
+            </div>
           ) : (
-            <p>No data available</p>
+            <p className="text-gray-500">No data available</p>
           )}
         </div>
-        <div className="bg-red-100 p-4 rounded">
-          <h3 className="font-semibold">Lowest Rate</h3>
+
+        <div className="bg-red-50 p-6 rounded-lg shadow-md">
+          <h3 className="text-lg font-semibold text-red-700 mb-2">Lowest Rate</h3>
           {data.low ? (
-            <>
-              <p>Date: {data.low.date}</p>
-              <p>Rate: {data.low.rate}</p>
-            </>
+            <div>
+              <p className="text-gray-600">Date: <span className="font-medium">{data.low.date}</span></p>
+              <p className="text-gray-600">Rate: <span className="font-medium">{data.low.rate}</span></p>
+            </div>
           ) : (
-            <p>No data available</p>
+            <p className="text-gray-500">No data available</p>
           )}
         </div>
       </div>
